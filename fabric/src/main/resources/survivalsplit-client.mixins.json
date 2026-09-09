@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.agnes.survivalsplitclient.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "EntityRenderManagerMixin",
+    "OrderedRenderCommandQueueImplMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

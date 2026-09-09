@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "net.minecraft.client.render",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "RenderLayerAccessor",
+    "RenderSetupAccessor",
+    "TextureSpecAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

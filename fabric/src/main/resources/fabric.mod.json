@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "survivalsplit-client",
+  "version": "${version}",
+  "name": "Survival Split Client",
+  "description": "生存服分流视觉：跨阵营玩家 70% 半透明，名字保持不透明",
+  "authors": [
+    "Blood & Soil"
+  ],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.agnes.survivalsplitclient.SurvivalSplitClient"
+    ],
+    "modmenu": [
+      "com.agnes.survivalsplitclient.SurvivalSplitModMenu"
+    ]
+  },
+  "mixins": [
+    "survivalsplit-client.mixins.json",
+    "survivalsplit-accessors.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": ">=1.21.11",
+    "fabric-api": "*",
+    "java": ">=21"
+  },
+  "suggests": {
+    "modmenu": "*",
+    "cloth-config": "*"
+  }
+}

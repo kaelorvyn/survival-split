@@ -1,0 +1,89 @@
+gui:
+  title: "&8身份选择"
+  # true: 每次进服都强制重新选择；false: 只对未选择过的玩家弹出。
+  always-show: true
+  # 玩家关闭选择界面后重新弹出的延迟（tick），1 = 下一 tick 立即弹出。
+  reopen-delay-ticks: 1
+  # 等待客户端模组握手的 tick 数；超时未握手自动按未装模组 legacy 处理。
+  mod-detect-wait-ticks: 20
+
+reach:
+  # 电脑玩家与和平玩家的默认交互距离。
+  pc-block: 4.5
+  pc-entity: 3.0
+  # 手机战斗玩家比默认多 1 格。
+  mobile-combat-block: 5.5
+  mobile-combat-entity: 4.0
+
+visual:
+  # 模组玩家看到“无分流”（未装模组）玩家时是否显示白色发光标记。
+  legacy-glow: true
+  refresh-ticks: 100
+  glow-duration-seconds: 600
+
+modaudit:
+  # 客户端模组审计总开关：玩家进服时由 SurvivalSplit-Client 上报模组列表，
+  # 服务端按模组指纹比对，变化时用 Tavily 真搜索 + Agnes AI 判定。
+  enabled: true
+  # true: 只在模组指纹与上次不同时联网审计，省 AI 资源；
+  # false: 每次进服都重新审计全部模组。
+  only-on-change: true
+  search:
+    # Tavily 搜索引擎（用户提供，tvly- 开头）
+    engine: tavily
+    tavily-url: "https://api.tavily.com/search"
+    # 留空则读取环境变量 TAVILY_API_KEY
+    tavily-api-key: ""
+    # 每个模组最多取几条搜索结果
+    max-results: 5
+    timeout-seconds: 15
+  ai:
+    base-url: "https://api.agnes-ai.cn"
+    model: "agnes-2.5-flash"
+    # 留空则读取 AGNES_API_KEY，再回退读取 KaelorvynGuard 的 ai.api-key
+    api-key: ""
+    timeout-seconds: 60
+  actions:
+    # 判定为作弊模组且置信度达到该值才直接封号
+    min-cheat-confidence: 0.9
+    # cheat: guard 走 KaelorvynGuard 同一踢出界面/路径，但不计警告、不封号，
+    # 只踢出并提示移除作弊模组；也可改为 ban / kick / warn / none
+    cheat: guard
+    # suspicious 与 unknown: warn / kick / none（默认只告警，不自动封号）
+    suspicious: warn
+    unknown: warn
+    # 直接封号时长（小时）
+    ban-hours: 168
+  # 内置可信模组：不会触发联网审计，可直接按配置补充自己的安全模组 id
+  safe-mods:
+    - minecraft
+    - fabricloader
+    - java
+    - fabric-api
+    - survivalsplit-client
+    - modmenu
+    - sodium
+    - iris
+    - lithium
+    - krypton
+    - phosphor
+    - indium
+    - cloth-config
+    - fabric-language-kotlin
+    - owo-lib
+    - yacl
+    - true-loyalty-client
+    - true-loyalty-tweakeroo-bridge
+  # 内置实锤作弊模组：命中后不需要联网，直接封号，可继续追加
+  cheat-mods:
+    - meteor-client
+    - wurst
+    - wurstpenguin
+    - wurst-bplus
+    - wurst-b-plus
+    - impact
+    - sigma
+    - liquidbounce
+    - future
+    - aristois
+    - salhack
